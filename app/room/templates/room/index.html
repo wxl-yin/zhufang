@@ -1,0 +1,46 @@
+{% extends 'room/base.html' %}
+
+{% block title %}
+    首页
+{% endblock %}
+
+{% block content %}
+    这里是首页，欢迎光临
+    {{ string }}
+    <ul>
+        {% for i in list %}
+        <li>{{ i }}</li>
+        {% endfor %}
+    </ul>
+    <br/>
+    字典：
+    {{ dic.site }}==={{ dic.content }}
+
+    <br/>
+    {% for key,value in dic.items %}
+        {{ value }}:{{ key }}<br/>
+    {% endfor %}
+
+    获取当前url参数
+    {{ request.GET.urlencode }}
+    <br/>
+    获取当前网址：
+    {{ request.path }}
+    <br/>
+    综合应用：
+    <a href="{{ request.path }}?{{ request.GET.urlencode }}&delete=1">当前网址加参数 delete</a>
+    <br/>
+    获取当前用：<br/>
+    {{ request.user }}
+    如果登录显示用户名，如果没有登录显示空<br/>
+    {% if request.user.is_authenticated %}
+        {{ request.user }}
+        {% else %}
+        请登录
+    {% endif %}
+
+    <br/>
+    创建一个链接
+    {% url 'add2' 2 44 as add2 %}
+    <a href="{{ add2 }}">点击链接{{ add2 }}</a>
+{% endblock %}
