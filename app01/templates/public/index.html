@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{% block title %}默认标题{% endblock %}</title>
+</head>
+<body>
+
+{% include 'public/nav.html' %}
+
+{% block content %}
+<div>模板首页内容</div>
+{% endblock %}
+
+{% include 'public/bottom.html' %}
+
+{% include 'public/tongji.html' %}
+
+</body>
+</html>
